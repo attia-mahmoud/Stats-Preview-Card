@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Lexend+Deca&display=swap");
+/* --------------------- */
+/* Custom Properties */
+/* --------------------- */
+
+:root {
+  /* colors */
+  --clr-dark-blue: hsl(233, 47%, 7%);
+  --clr-desaturated-blue: hsl(244, 38%, 16%);
+  --clr-violet: hsl(277, 64%, 61%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-transparent-white-400: hsla(0, 0%, 100%, 0.75);
+  --clr-transparent-white-500: hsla(0, 0%, 100%, 0.6);
+  /* font-sizes */
+  --fs-700: 1.6rem;
+  --fs-600: 1.4rem;
+  --fs-400: 0.9375rem;
+  --fs-500: 0.75rem;
+  /* font-families */
+  --ff-inter: "Inter", sans-serif;
+  --ff-lexend: "Lexend Deca", sans-serif;
+  /* font-weights */
+  --fw-700: 700;
+}
+
+@media (min-width: 1440px) {
+  /* font-sizes */
+  :root {
+    --fs-700: 2rem;
+    --fs-600: 1.3rem;
+    --fs-400: 0.85rem;
+    --fs-500: 0.6rem;
+  }
+}
+
+/* --------------------- */
+/* Reset */
+/* --------------------- */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  font-family: var(--ff-inter);
+  font-size: var(--fs-400);
+  background-color: var(--clr-dark-blue);
+  color: var(--clr-transparent-white-400);
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
+
+  overflow-x: hidden;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------- */
+/* Utility Classes */
+/* --------------------- */
+
+/* general */
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.d-block {
+  display: block;
+}
+
+/* select everything that has an adjacent sibling before it */
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);
+}
+
+.flow--space--small {
+  --flow-space: 0.5rem;
+}
+
+.container {
+  padding-inline: 2em;
+  margin-inline: auto;
+  max-width: 80rem;
+}
+
+/* screen reader mode only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+/* colors */
+.dark-blue {
+  color: var(--clr-dark-blue);
+}
+.desaturated-blue {
+  color: var(--clr-desaturated-blue);
+}
+.violet {
+  color: var(--clr-violet);
+}
+.white {
+  color: var(--clr-white);
+}
+.transparent-white-400 {
+  color: var(--clr-transparent-white-400);
+}
+.transparent-white-500 {
+  color: var(--clr-transparent-white-500);
+}
+/* typography */
+
+.lexend {
+  font-family: var(--ff-lexend);
+}
+
+.fs-700 {
+  font-size: var(--fs-700);
+}
+.fs-600 {
+  font-size: var(--fs-600);
+}
+.fs-500 {
+  font-size: var(--fs-500);
+}
+
+.letter-spacing-1 {
+  letter-spacing: 4.75px;
+}
+.letter-spacing-2 {
+  letter-spacing: 2.7px;
+}
+.letter-spacing-3 {
+  letter-spacing: 1.5px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.fw-700 {
+  font-weight: var(--fw-700);
+}
+
+/* --------------------- */
+/* Components */
+/* --------------------- */
+img {
+  border-radius: 10px 10px 0 0;
+}
+
+.container-image {
+  position: relative;
+}
+
+.container-image::before {
+  border-radius: 10px 10px 0 0;
+  content: "";
+  position: absolute;
+  left: 0rem;
+  top: 0rem;
+  right: 0rem;
+  bottom: 0;
+  background: var(--clr-violet);
+  opacity: 1;
+  mix-blend-mode: multiply;
+}
+
+.container-info > h1 {
+  max-width: 15ch;
+  line-height: 1.3;
+  margin-block: 1rem -1rem;
+}
+
+.container-meta {
+  --gap: 1.5rem;
+  flex-direction: column;
+}
+
+/* --------------------- */
+/* Layout */
+/* --------------------- */
+
+.container-card {
+  background-color: var(--clr-desaturated-blue);
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  transform: translate(0, 5%);
+  max-width: 20rem;
+  max-height: 50rem;
+  border-radius: 10px;
+  padding: 0;
+  padding-bottom: 3rem;
+}
+
+.container-info {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 35ch;
+  line-height: 1.7;
+}
+
+.meta > p:last-child {
+  margin-bottom: -0.7rem;
+}
+
+@media (min-width: 1440px) {
+  .container-card {
+    background-color: var(--clr-desaturated-blue);
+    flex-direction: row;
+    transform: translate(0, 25%);
+    min-width: 67rem;
+    height: 27rem;
+  }
+
+  .container-info {
+    --gap: 3rem;
+    max-width: 45ch;
+    line-height: 1.7;
+    text-align: left;
+    align-items: flex-start;
+    margin-block: 4rem;
+    margin-inline-start: 4rem;
+  }
+
+  img {
+    border-radius: 0 10px 10px 0;
+    height: 27rem;
+  }
+
+  .container-image {
+    order: 1;
+    top: 1.5rem;
+  }
+
+  .container-image::before {
+    border-radius: 0 10px 10px 0;
+  }
+
+  .container-info > h1 {
+    max-width: 18ch;
+    margin-block-end: -2rem;
+  }
+
+  .container-meta {
+    --gap: 3rem;
+    flex-direction: row;
+  }
+}
